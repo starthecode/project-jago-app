@@ -1,5 +1,3 @@
-import { redirect, useNavigate } from 'react-router-dom';
-
 type FetchApiParams = {
   url: string;
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
@@ -48,7 +46,8 @@ export const handleSignout = async (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dispatch: (action: any) => void,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  signoutSuccess: () => any
+  signoutSuccess: () => any,
+  navigate: (path: string) => void
 ): Promise<void> => {
   try {
     const res = await fetch(`${API_URL}/user/signout`, {
@@ -60,7 +59,7 @@ export const handleSignout = async (
       console.error(data.message);
     } else {
       dispatch(signoutSuccess());
-      redirect('/');
+      navigate('/');
     }
   } catch (error) {
     if (error instanceof Error) {

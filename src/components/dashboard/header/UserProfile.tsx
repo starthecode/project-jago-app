@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { handleSignout } from '../../../utils/api';
 import { signoutSuccess } from '../../../redux/slices/userSlice';
 import type { RootState } from '../../../redux/store';
+import { useNavigate } from 'react-router-dom';
 
 export const UserProfile = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,8 @@ export const UserProfile = () => {
   const { currentUser } = useSelector((state: RootState) => state.user);
 
   const [active, setActive] = React.useState(false);
+
+  const navigate = useNavigate();
 
   const handleDropdown = () => {
     setActive((prevActive) => !prevActive);
@@ -96,7 +99,9 @@ export const UserProfile = () => {
 
               <li>
                 <button
-                  onClick={() => handleSignout(dispatch, signoutSuccess)}
+                  onClick={() =>
+                    handleSignout(dispatch, signoutSuccess, navigate)
+                  }
                   className="flex gap-2 my-2 w-full items-center justify-center rounded-md text-sm font-medium border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
                 >
                   Logout <BiLogOut className="h-4 w-4 mr-2" />
