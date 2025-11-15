@@ -61,7 +61,7 @@ export const AuthForm = ({ activeTab }: { activeTab: 'signin' | 'signup' }) => {
     setIsLoading(true);
 
     try {
-      const res = await fetch('/api/otp/getOtp', {
+      const res = await fetch('/otp/getOtp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -112,7 +112,7 @@ export const AuthForm = ({ activeTab }: { activeTab: 'signin' | 'signup' }) => {
     setIsLoading(true);
 
     try {
-      const otpRes = await fetch('/api/otp/verifyOtp', {
+      const otpRes = await fetch('/otp/verifyOtp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -154,8 +154,7 @@ export const AuthForm = ({ activeTab }: { activeTab: 'signin' | 'signup' }) => {
     dispatch(signInStart());
 
     try {
-      const endpoint =
-        activeTab === 'signup' ? '/api/auth/signup' : '/api/auth/signin';
+      const endpoint = activeTab === 'signup' ? '/auth/signup' : '/auth/signin';
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -206,7 +205,7 @@ export const AuthForm = ({ activeTab }: { activeTab: 'signin' | 'signup' }) => {
     setIsLoading(true);
 
     try {
-      const res = await fetch('/api/auth/updatePass', {
+      const res = await fetch('/auth/updatePass', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

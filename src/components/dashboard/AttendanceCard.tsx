@@ -33,7 +33,7 @@ const AttendanceCard = ({ userId }: AttendanceCardProps) => {
   }, [userId]);
 
   const fetchTodayAttendance = async () => {
-    const res = await fetch(`/api/attendance/today/${userId}`);
+    const res = await fetch(`/attendance/today/${userId}`);
     const json: AttendanceResponse = await res.json();
 
     if (json.success) {
@@ -85,7 +85,7 @@ const AttendanceCard = ({ userId }: AttendanceCardProps) => {
     try {
       const location = await getLocation();
 
-      const res = await fetch('/api/attendance/clock-in', {
+      const res = await fetch('/attendance/clock-in', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -117,7 +117,7 @@ const AttendanceCard = ({ userId }: AttendanceCardProps) => {
 
     try {
       const res = await fetch(
-        `/api/attendance/clock-out/${activeAttendance.userId}`,
+        `/attendance/clock-out/${activeAttendance.userId}`,
         { method: 'PUT' }
       );
 

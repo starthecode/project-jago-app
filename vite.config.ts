@@ -27,14 +27,16 @@ import path from 'path';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
+const API_URL = process.env.VITE_API_BASE_URL || 'http://fallback-url.com';
+
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
   server: {
     host: '::',
     port: 8080,
     proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
+      '': {
+        target: API_URL,
         changeOrigin: true, // <-- add this if not already there
         secure: false,
       },
