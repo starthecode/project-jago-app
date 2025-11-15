@@ -32,8 +32,10 @@ const AttendanceCard = ({ userId }: AttendanceCardProps) => {
     if (userId) fetchTodayAttendance();
   }, [userId]);
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const fetchTodayAttendance = async () => {
-    const res = await fetch(`/attendance/today/${userId}`);
+    const res = await fetch(`${API_URL}/attendance/today/${userId}`);
     const json: AttendanceResponse = await res.json();
 
     if (json.success) {
@@ -85,7 +87,7 @@ const AttendanceCard = ({ userId }: AttendanceCardProps) => {
     try {
       const location = await getLocation();
 
-      const res = await fetch('/attendance/clock-in', {
+      const res = await fetch(`${API_URL}/attendance/clock-in`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -117,7 +119,7 @@ const AttendanceCard = ({ userId }: AttendanceCardProps) => {
 
     try {
       const res = await fetch(
-        `/attendance/clock-out/${activeAttendance.userId}`,
+        `${API_URL}/attendance/clock-out/${activeAttendance.userId}`,
         { method: 'PUT' }
       );
 

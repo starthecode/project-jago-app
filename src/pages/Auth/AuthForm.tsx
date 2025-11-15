@@ -61,7 +61,7 @@ export const AuthForm = ({ activeTab }: { activeTab: 'signin' | 'signup' }) => {
     setIsLoading(true);
 
     try {
-      const res = await fetch('/otp/getOtp', {
+      const res = await fetch(`${API_URL}/otp/getOtp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -102,6 +102,8 @@ export const AuthForm = ({ activeTab }: { activeTab: 'signin' | 'signup' }) => {
     }
   }, [isOtpSent, timeLeft]);
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const handleOtpVerify = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -110,8 +112,6 @@ export const AuthForm = ({ activeTab }: { activeTab: 'signin' | 'signup' }) => {
     }
 
     setIsLoading(true);
-
-    const API_URL = import.meta.env.VITE_API_URL;
 
     try {
       const otpRes = await fetch(`${API_URL}/otp/verifyOtp`, {
@@ -207,7 +207,7 @@ export const AuthForm = ({ activeTab }: { activeTab: 'signin' | 'signup' }) => {
     setIsLoading(true);
 
     try {
-      const res = await fetch('/auth/updatePass', {
+      const res = await fetch(`${API_URL}/auth/updatePass`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
