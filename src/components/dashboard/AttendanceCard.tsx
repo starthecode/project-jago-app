@@ -119,7 +119,7 @@ const AttendanceCard = ({ userId }: AttendanceCardProps) => {
 
     try {
       const res = await fetch(
-        `${API_URL}/attendance/clock-out/${activeAttendance.userId}`,
+        `${API_URL}/attendance/clock-out/${activeAttendance?.userId}`,
         { method: 'PUT' }
       );
 
