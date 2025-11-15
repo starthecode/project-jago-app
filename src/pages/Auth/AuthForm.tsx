@@ -111,8 +111,10 @@ export const AuthForm = ({ activeTab }: { activeTab: 'signin' | 'signup' }) => {
 
     setIsLoading(true);
 
+    const API_URL = import.meta.env.VITE_API_URL;
+
     try {
-      const otpRes = await fetch('/otp/verifyOtp', {
+      const otpRes = await fetch(`${API_URL}/otp/verifyOtp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
