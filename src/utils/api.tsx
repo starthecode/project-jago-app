@@ -1,3 +1,5 @@
+import { redirect, useNavigate } from 'react-router-dom';
+
 type FetchApiParams = {
   url: string;
   method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
@@ -58,6 +60,7 @@ export const handleSignout = async (
       console.error(data.message);
     } else {
       dispatch(signoutSuccess());
+      redirect('/');
     }
   } catch (error) {
     if (error instanceof Error) {

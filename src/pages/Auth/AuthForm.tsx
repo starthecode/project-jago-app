@@ -187,8 +187,8 @@ export const AuthForm = ({ activeTab }: { activeTab: 'signin' | 'signup' }) => {
       );
 
       if (activeTab === 'signup') {
-        navigate('/auth');
-        toast.success('Please login Now');
+        dispatch(signInSuccess(data));
+        navigate('/dashboard');
       } else {
         navigate('/dashboard');
       }
