@@ -102,7 +102,7 @@ export const AuthForm = ({ activeTab }: { activeTab: 'signin' | 'signup' }) => {
     }
   }, [isOtpSent, timeLeft]);
 
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = import.meta.env.VITE_API_BASE_URL;
 
   const handleOtpVerify = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();

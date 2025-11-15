@@ -32,7 +32,7 @@ const AttendanceCard = ({ userId }: AttendanceCardProps) => {
     if (userId) fetchTodayAttendance();
   }, [userId]);
 
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = import.meta.env.VITE_API_BASE_URL;
 
   const fetchTodayAttendance = async () => {
     const res = await fetch(`${API_URL}/attendance/today/${userId}`);
