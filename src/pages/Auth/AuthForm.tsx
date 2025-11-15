@@ -156,7 +156,10 @@ export const AuthForm = ({ activeTab }: { activeTab: 'signin' | 'signup' }) => {
     dispatch(signInStart());
 
     try {
-      const endpoint = activeTab === 'signup' ? '/auth/signup' : '/auth/signin';
+      const endpoint =
+        activeTab === 'signup'
+          ? `${API_URL}/auth/signup`
+          : `${API_URL}/auth/signin`;
       const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
