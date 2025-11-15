@@ -5,6 +5,8 @@ type FetchApiParams = {
   headers?: Record<string, string>;
 };
 
+const API_URL = import.meta.env.VITE_API_BASE_URL;
+
 export async function fetchApi({
   url,
   method = 'GET',
@@ -47,7 +49,7 @@ export const handleSignout = async (
   signoutSuccess: () => any
 ): Promise<void> => {
   try {
-    const res = await fetch('/user/signout', {
+    const res = await fetch(`${API_URL}/user/signout`, {
       method: 'POST',
     });
 
