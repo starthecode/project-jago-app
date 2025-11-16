@@ -9,8 +9,6 @@ import type { RootState } from '../redux/store';
 const Dashboard = () => {
   const { currentUser } = useSelector((state: RootState) => state.user);
 
-  console.log('currentUser', currentUser);
-
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -66,6 +64,7 @@ const Dashboard = () => {
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">
+          {/* sending current user id */}
           <AttendanceCard userId={currentUser?.id} />
           <FitnessCard />
         </div>

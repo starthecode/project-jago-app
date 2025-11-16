@@ -115,6 +115,10 @@ const AttendanceCard = ({ userId }: AttendanceCardProps) => {
   const handleClockOut = async () => {
     if (!activeAttendance) return;
 
+    console.log('todayAttendance', todayAttendance);
+
+    return false;
+
     setLoading(true);
 
     try {
