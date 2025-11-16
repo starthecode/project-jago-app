@@ -7,6 +7,7 @@ interface AttendanceCardProps {
 }
 
 export interface Attendance {
+  id: number;
   userId: number;
   date: string;
   status: 'present' | 'absent' | 'late' | 'leave';
@@ -115,13 +116,13 @@ const AttendanceCard = ({ userId }: AttendanceCardProps) => {
   const handleClockOut = async () => {
     if (!activeAttendance) return;
 
-    console.log('todayAttendance', todayAttendance);
+    // console.log('todayAttendance', todayAttendance);
 
     setLoading(true);
 
     try {
       const res = await fetch(
-        `${API_URL}/attendance/clock-out/${activeAttendance?.userId}`,
+        `${API_URL}/attendance/clock-out/${activeAttendance?.id}`,
         { method: 'PUT' }
       );
 
