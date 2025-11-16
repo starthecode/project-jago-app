@@ -117,8 +117,6 @@ const AttendanceCard = ({ userId }: AttendanceCardProps) => {
 
     console.log('todayAttendance', todayAttendance);
 
-    return false;
-
     setLoading(true);
 
     try {
